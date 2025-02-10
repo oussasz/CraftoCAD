@@ -48,23 +48,6 @@
           <li><a href="#portfolio">Portfolio</a></li>
           <li><a href="#pricing">Tarifs</a></li> <!-- Tarifs au lieu de Prix -->
           <li><a href="blog.html">Blog</a></li>
-          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="#">Dropdown 1</a></li>
-              <li class="dropdown"><a href="#"><span>Dropdown Profond</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a> <!-- Dropdown Profond en français -->
-                <ul>
-                  <li><a href="#">Dropdown Profond 1</a></li>
-                  <li><a href="#">Dropdown Profond 2</a></li>
-                  <li><a href="#">Dropdown Profond 3</a></li>
-                  <li><a href="#">Dropdown Profond 4</a></li>
-                  <li><a href="#">Dropdown Profond 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Dropdown 2</a></li>
-              <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li>
-            </ul>
-          </li>
           <li><a href="#contact">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -426,125 +409,117 @@
 
     </section><!-- End Stats Section -->
 
-    <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio section">
+<!-- ======= Portfolio Section ======= -->
+<!--
+<section id="portfolio" class="portfolio section">
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Portfolio</h2> <!-- Titre de la section "Portfolio" en français -->
-        <p>Découvrez quelques-uns de nos projets de conception mécanique les plus récents et innovants.</p> <!-- Texte introductif de la section "Portfolio" en français -->
-      </div><!-- End Section Title -->
+  Section Title -->
+  <!-- <div class="container section-title" data-aos="fade-up">
+    <h2>Portfolio</h2> 
+    <p>Découvrez quelques-uns de nos projets de conception mécanique les plus récents et innovants.</p> 
+  </div>
 
-      <div class="container">
+  <div class="container">
 
-        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+    <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
 
-          <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
-            <li data-filter="*" class="filter-active">Tous</li> <!-- Filtre "Tous" en français -->
-            <li data-filter=".filter-app">Composants Mécaniques</li> <!-- Filtre "Composants Mécaniques" en français (remplace "App") -->
-            <li data-filter=".filter-product">Assemblages</li> <!-- Filtre "Assemblages" en français (remplace "Card/Product") -->
-            <li data-filter=".filter-branding">Prototype</li> <!-- Filtre "Outillage" en français (remplace "Web/Branding") -->
-          </ul><!-- End Portfolio Filters -->
+      <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
+        <li data-filter="*" class="filter-active">Tous</li> 
+        <li data-filter=".filter-app">Composants Mécaniques</li> 
+        <li data-filter=".filter-product">Assemblages</li> 
+        <li data-filter=".filter-branding">Prototype</li> 
+      </ul>
 
-          <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+      <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <img src="assets/img/masonry-portfolio/masonry-portfolio-1.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Composant 1</h4> <!-- Nom du projet en français -->
-                <p>Conception d'un support moteur</p> <!-- Description du projet en français -->
-                <a href="assets/img/masonry-portfolio/masonry-portfolio-1.jpg" title="Composant 1" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                
-              </div>
-            </div><!-- End Portfolio Item -->
+        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+          <img src="assets/img/masonry-portfolio/masonry-portfolio-1.jpg" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>Composant 1</h4> 
+            <p>Conception d'un support moteur</p> 
+            <a href="assets/img/masonry-portfolio/masonry-portfolio-1.jpg" title="Composant 1" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+          </div>
+        </div>
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <img src="assets/img/masonry-portfolio/masonry-portfolio-2.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Assemblage 1</h4> <!-- Nom du projet en français -->
-                <p>Modélisation d'un réducteur</p> <!-- Description du projet en français -->
-                <a href="assets/img/masonry-portfolio/masonry-portfolio-2.jpg" title="Assemblage 1" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <!--<a href="portfolio-details.html" title="Plus de Détails" class="details-link"><i class="bi bi-link-45deg"></i></a> -->   <!-- Lien "Plus de Détails" en français -->
-              </div>
-            </div><!-- End Portfolio Item -->
+        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
+          <img src="assets/img/masonry-portfolio/masonry-portfolio-2.jpg" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>Assemblage 1</h4> 
+            <p>Modélisation d'un réducteur</p> 
+            <a href="assets/img/masonry-portfolio/masonry-portfolio-2.jpg" title="Assemblage 1" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+          </div>
+        </div>
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-              <img src="assets/img/masonry-portfolio/masonry-portfolio-3.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Outillage 1</h4> <!-- Nom du projet en français -->
-                <p>Conception d'un moule d'injection</p> <!-- Description du projet en français -->
-                <a href="assets/img/masonry-portfolio/masonry-portfolio-3.jpg" title="Outillage 1" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                 <!--<a href="portfolio-details.html" title="Plus de Détails" class="details-link"><i class="bi bi-link-45deg"></i></a> --> <!-- Lien "Plus de Détails" en français -->
-              </div>
-            </div><!-- End Portfolio Item -->
+        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
+          <img src="assets/img/masonry-portfolio/masonry-portfolio-3.jpg" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>Outillage 1</h4> 
+            <p>Conception d'un moule d'injection</p> 
+            <a href="assets/img/masonry-portfolio/masonry-portfolio-3.jpg" title="Outillage 1" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+          </div>
+        </div>
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <img src="assets/img/masonry-portfolio/masonry-portfolio-4.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Composant 2</h4> <!-- Nom du projet en français -->
-                <p>Modélisation d'un arbre de transmission</p> <!-- Description du projet en français -->
-                <a href="assets/img/masonry-portfolio/masonry-portfolio-4.jpg" title="Composant 2" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                 <!--<a href="portfolio-details.html" title="Plus de Détails" class="details-link"><i class="bi bi-link-45deg"></i></a> --><!-- Lien "Plus de Détails" en français -->
-              </div>
-            </div><!-- End Portfolio Item -->
+        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+          <img src="assets/img/masonry-portfolio/masonry-portfolio-4.jpg" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>Composant 2</h4> 
+            <p>Modélisation d'un arbre de transmission</p> 
+            <a href="assets/img/masonry-portfolio/masonry-portfolio-4.jpg" title="Composant 2" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+          </div>
+        </div>
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <img src="assets/img/masonry-portfolio/masonry-portfolio-5.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Assemblage 2</h4> <!-- Nom du projet en français -->
-                <p>Conception d'un système de levage</p> <!-- Description du projet en français -->
-                <a href="assets/img/masonry-portfolio/masonry-portfolio-5.jpg" title="Assemblage 2" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                 <!--<a href="portfolio-details.html" title="Plus de Détails" class="details-link"><i class="bi bi-link-45deg"></i></a> --> <!-- Lien "Plus de Détails" en français -->
-              </div>
-            </div><!-- End Portfolio Item -->
+        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
+          <img src="assets/img/masonry-portfolio/images.jpeg" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>Assemblage 2</h4> 
+            <p>Conception d'un système de levage</p> 
+            <a href="assets/img/masonry-portfolio/images.jpeg" title="Assemblage 2" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+          </div>
+        </div>
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-              <img src="assets/img/masonry-portfolio/masonry-portfolio-6.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Outillage 2</h4> <!-- Nom du projet en français -->
-                <p>Modélisation d'un outil de découpe</p> <!-- Description du projet en français -->
-                <a href="assets/img/masonry-portfolio/masonry-portfolio-6.jpg" title="Outillage 2" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                 <!--<a href="portfolio-details.html" title="Plus de Détails" class="details-link"><i class="bi bi-link-45deg"></i></a> --><i class="bi bi-link-45deg"></i></a> <!-- Lien "Plus de Détails" en français -->
-              </div>
-            </div><!-- End Portfolio Item -->
+        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
+          <img src="assets/img/masonry-portfolio/masonry-portfolio-6.jpg" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>Outillage 2</h4> 
+            <p>Modélisation d'un outil de découpe</p> 
+            <a href="assets/img/masonry-portfolio/masonry-portfolio-6.jpg" title="Outillage 2" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+          </div>
+        </div>
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <img src="assets/img/masonry-portfolio/masonry-portfolio-7.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Composant 3</h4> <!-- Nom du projet en français -->
-                <p>Conception d'un carter de protection</p> <!-- Description du projet en français -->
-                <a href="assets/img/masonry-portfolio/masonry-portfolio-7.jpg" title="Composant 3" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                 <!--<a href="portfolio-details.html" title="Plus de Détails" class="details-link"><i class="bi bi-link-45deg"></i></a> --> <!-- Lien "Plus de Détails" en français -->
-              </div>
-            </div><!-- End Portfolio Item -->
+        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+          <img src="assets/img/masonry-portfolio/masonry-portfolio-7.jpg" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>Composant 3</h4> 
+            <p>Conception d'un carter de protection</p> 
+            <a href="assets/img/masonry-portfolio/masonry-portfolio-7.jpg" title="Composant 3" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+          </div>
+        </div>
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <img src="assets/img/masonry-portfolio/masonry-portfolio-8.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Assemblage 3</h4> <!-- Nom du projet en français -->
-                <p>Modélisation d'un convoyeur industriel</p> <!-- Description du projet en français -->
-                <a href="assets/img/masonry-portfolio/masonry-portfolio-8.jpg" title="Assemblage 3" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                 <!--<a href="portfolio-details.html" title="Plus de Détails" class="details-link"><i class="bi bi-link-45deg"></i></a> --> <!-- Lien "Plus de Détails" en français -->
-              </div>
-            </div><!-- End Portfolio Item -->
+        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
+          <img src="assets/img/masonry-portfolio/images (1).jpeg" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>Assemblage 3</h4> 
+            <p>Modélisation d'un convoyeur industriel</p> 
+            <a href="assets/img/masonry-portfolio/images (1).jpeg" title="Assemblage 3" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+          </div>
+        </div>
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-              <img src="assets/img/masonry-portfolio/masonry-portfolio-9.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Outillage 3</h4> <!-- Nom du projet en français -->
-                <p>Conception d'un gabarit d'usinage</p> <!-- Description du projet en français -->
-                <a href="assets/img/masonry-portfolio/masonry-portfolio-9.jpg" title="Outillage 2" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                 <!--<a href="portfolio-details.html" title="Plus de Détails" class="details-link"><i class="bi bi-link-45deg"></i></a> --> <!-- Lien "Plus de Détails" en français -->
-              </div>
-            </div><!-- End Portfolio Item -->
-
-          </div><!-- End Portfolio Container -->
-
+        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
+          <img src="assets/img/masonry-portfolio/masonry-portfolio-9.jpg" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>Outillage 3</h4> 
+            <p>Conception d'un gabarit d'usinage</p> 
+            <a href="assets/img/masonry-portfolio/masonry-portfolio-9.jpg" title="Outillage 2" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+          </div>
         </div>
 
       </div>
 
-    </section><!-- End Portfolio Section -->
+    </div>
+
+  </div>
+
+</section>-->
 
    <!-- ======= Value-Based Pricing Section ======= -->
 <section id="pricing" class="pricing section light-background">
@@ -727,7 +702,7 @@
           </div>
 
           <div class="col-lg-5 order-1 order-lg-2">
-            <img src="assets/img/faq.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="100" style="width: 70%;">
+            <img src="assets/img/faq.webp" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="100" style="width: 70%;">
 
           </div>
         </div>
@@ -799,7 +774,7 @@
               <i class="bi bi-envelope flex-shrink-0"></i>
               <div>
                 <h3>Envoyez-Nous un Email</h3> <!-- Titre de l'information de contact en français -->
-                <p>contact@craftocad.com</p> <!-- Email fictif pour CraftoCAD -->
+                <p>contact@craftocad.tech</p> <!-- Email fictif pour CraftoCAD -->
               </div>
             </div><!-- End Info Item -->
 
