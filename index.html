@@ -1,858 +1,546 @@
 <!DOCTYPE html>
-<html lang="fr"> <!-- Définit la langue du document en français -->
-
+<html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>CrftoCAD</title> <!-- Titre de la page en français -->
-  <meta name="description" content="CraftoCAD - Spécialistes en conception CAO mécanique"> <!-- Description en français pour le SEO -->
-  <meta name="keywords" content="CAO, conception mécanique, ingénierie, design, 3D, modélisation"> <!-- Mots-clés en français pour le SEO -->
-
-  <!-- Favicons -->
-  <link href="assets/img/Crafto.png" rel="icon">
-  <link href="assets/img/Crafto.png" rel="apple-touch-icon">
-
-  <!-- Polices -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
-  <!-- Fichiers CSS des librairies Vendor -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Fichier CSS principal -->
-  <link href="assets/css/main.css" rel="stylesheet">
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MentaFox Opinion Poll</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #e0e7ff, #f4f4f9);
+            margin: 0;
+            padding: 15px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #header {
+            background: #004aad;
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 900px;
+            text-align: center;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            animation: fadeIn 1s ease-in;
+        }
+        #header img {
+            max-width: 150px;
+            margin-bottom: 10px;
+        }
+        #poll-container {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 900px;
+            position: relative;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        .progress {
+            height: 100%;
+            background: #4f46e5;
+            transition: width 0.5s ease;
+        }
+        .poll-question h2 {
+            font-size: 1.6em;
+            margin-bottom: 15px;
+            color: #1f2937;
+        }
+        .poll-question p {
+            font-size: 1.1em;
+            color: #4b5563;
+            line-height: 1.6;
+        }
+        .poll-question label {
+            display: flex;
+            align-items: center;
+            margin: 12px 0;
+            font-size: 1.1em;
+            color: #374151;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 8px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .poll-question label:hover {
+            background-color: #f3f4f6;
+            transform: translateX(5px);
+        }
+        .poll-question input[type="radio"],
+        .poll-question input[type="checkbox"] {
+            margin-right: 12px;
+            accent-color: #004aad;
+            width: 20px;
+            height: 20px;
+        }
+        .poll-question input[type="text"],
+        .poll-question input[type="email"],
+        .poll-question input[type="tel"] {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border: 2px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+        .poll-question input[type="text"]:focus,
+        .poll-question input[type="email"]:focus,
+        .poll-question input[type="tel"]:focus {
+            border-color: #004aad;
+            outline: none;
+        }
+        .rating-group > div {
+            margin: 15px 0;
+        }
+        .rating-option {
+            display: inline-block;
+            margin-right: 10px;
+        }
+        .rating-option input {
+            display: none;
+        }
+        .rating-option label {
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            background: #e5e7eb;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .rating-option input:checked + label {
+            background: #4f46e5;
+            color: white;
+            transform: scale(1.1);
+        }
+        #next-btn {
+            background: #4f46e5;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1em;
+            margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+        #next-btn:hover {
+            background: #4338ca;
+            transform: translateY(-2px);
+        }
+        @media (max-width: 600px) {
+            body { padding: 10px; }
+            #header { padding: 15px; }
+            #poll-container { padding: 15px; }
+            .poll-question h2 { font-size: 1.4em; }
+            .poll-question label { font-size: 1em; padding: 8px; }
+            #next-btn { width: 100%; padding: 12px; }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
-
-<body class="index-page">
-
-  <!-- ======= Header ======= -->
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container position-relative d-flex align-items-center justify-content-between">
-
-      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
-        <img src="assets/titre.png" alt="Logo CraftoCAD">  <!-- Image du logo avec alt text en français -->
-      </a>
-
-      <!-- ======= Navigation Menu ======= -->
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="#hero" class="active">Accueil</a></li> <!-- Accueil en français -->
-          <li><a href="#about">À Propos</a></li> <!-- À Propos en français -->
-          <li><a href="#services">Services</a></li>
-          <li><a href="#pricing">Tarifs</a></li> <!-- Tarifs au lieu de Prix -->
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav><!-- .navmenu -->
-
-      <a class="cta-btn" href="#about">Commencer</a> <!-- Bouton "Commencer" -->
-
+<body>
+    <div id="header">
+        <img src="logo.png" alt="MentaFox Logo">
+        <h1>MentaFox Opinion Poll</h1>
     </div>
-  </header><!-- End Header -->
-
- <!-- ======= Main ======= -->
-<!-- ======= Main ======= -->
-<main class="main">
-
-  <section id="hero" class="hero section dark-background custom-hero-bg">
-    <img src="assets/img/hero-bg.jpg" alt="" data-aos="fade-in">
-    <div class="container d-flex flex-column align-items-center text-center">
-      <h2 data-aos="fade-up" data-aos-delay="100">Bienvenue chez CraftoCAD</h2>
-      <p data-aos="fade-up" data-aos-delay="200">Votre partenaire en conception CAO mécanique sur mesure</p>
-      <div data-aos="fade-up" data-aos-delay="300">
-        <a href="https://youtu.be/LImJps1CNmk" class="glightbox pulsating-play-btn"></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Lottie Animation at the Bottom -->
-  <div id="scroll-animation" style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 1000; opacity: 1; transition: opacity 0.5s ease-in-out;">
-    <lottie-player
-      src="assets/scrol.json"
-      background="transparent"
-      speed="2"
-      style="width: 100px; height: 100px;"
-      loop
-      autoplay>
-    </lottie-player>
-  </div>
-
-</main>
-
-<!-- JavaScript to Handle Scroll Events -->
-<script>
-  document.addEventListener("scroll", function () {
-    const heroSection = document.getElementById("hero");
-    const scrollAnimation = document.getElementById("scroll-animation");
-
-    // Get the height of the hero section
-    const heroHeight = heroSection.offsetHeight;
-
-    // Get the current scroll position
-    const scrollPosition = window.scrollY;
-
-    // Fade out the animation if scrolled out of the hero section
-    if (scrollPosition > heroHeight) {
-      scrollAnimation.style.opacity = "0";
-    } else {
-      scrollAnimation.style.opacity = "1";
-    }
-  });
-</script>
-
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>À Propos de Nous</h2> <!-- Titre de la section "À Propos" en français -->
-        <p>Découvrez CraftoCAD, votre expert en solutions de conception mécanique innovantes et personnalisées.</p> <!-- Texte introductif de la section "À Propos" en français -->
-      </div><!-- End Section Title -->
-
-      <div class="container">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
-            <p>
-              Chez CraftoCAD, nous sommes passionnés par la transformation de vos idées en réalités mécaniques. Forts de notre expertise en conception assistée par ordinateur (CAO), nous offrons des services de modélisation 3D, de simulation, et de dessin technique de haute précision.
-            </p>
-            <ul>
-              <li><i class="bi bi-check2-circle"></i> <span>Conception 3D personnalisée pour répondre à vos besoins spécifiques.</span></li> <!-- Liste de points clés en français -->
-              <li><i class="bi bi-check2-circle"></i> <span>Simulation et analyse pour optimiser la performance et la fiabilité de vos produits.</span></li>
-              <li><i class="bi bi-check2-circle"></i> <span>Création de plans techniques détaillés pour la fabrication et l'assemblage.</span></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            <p>Nous travaillons en étroite collaboration avec nos clients, de la phase de concept initial jusqu'à la production finale, afin de garantir des solutions innovantes et efficaces. Que vous soyez une start-up ou une grande entreprise, CraftoCAD est votre partenaire idéal pour concrétiser vos projets mécaniques. Notre engagement envers la qualité et la satisfaction client est au cœur de notre démarche.</p>
-            <a href="#" class="read-more"><span>Lire Plus</span><i class="bi bi-arrow-right"></i></a> <!-- Lien "Lire Plus" en français -->
-          </div>
-
-        </div>
-
-      </div>
-
-    </section><!-- End About Section -->
-
-    <!-- ======= Services Section ======= -->
-    <section id="services" class="services section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Nos Services</h2> <!-- Titre de la section "Services" en français -->
-        <p>Découvrez l'étendue de nos services en conception CAO mécanique, conçus pour répondre à tous vos besoins.</p> <!-- Texte introductif de la section "Services" en français -->
-      </div><!-- End Section Title -->
-
-      <div class="container">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-item  position-relative">
-              <div class="icon">
-                <i class="bi bi-box"></i>
-              </div>
-              <a href="#" class="stretched-link">
-                <h3>Modélisation 3D</h3> <!-- Nom du service en français -->
-              </a>
-              <p>Création de modèles 3D précis et détaillés de vos pièces et assemblages mécaniques, adaptés à vos exigences.</p> <!-- Description du service en français -->
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-broadcast"></i>
-              </div>
-              <a href="#" class="stretched-link">
-                <h3>Simulation et Analyse</h3> <!-- Nom du service en français -->
-              </a>
-              <p>Analyse de contraintes, simulation de mouvements et études de performance pour optimiser vos conceptions avant la production.</p> <!-- Description du service en français -->
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-easel"></i>
-              </div>
-              <a href="#" class="stretched-link">
-                <h3>Dessin Technique</h3> <!-- Nom du service en français -->
-              </a>
-              <p>Réalisation de plans techniques 2D précis et conformes aux normes, pour la fabrication et l'assemblage de vos produits.</p> <!-- Description du service en français -->
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-bounding-box-circles"></i>
-              </div>
-              <a href="#" class="stretched-link">
-                <h3>Conception d'Assemblages</h3> <!-- Nom du service en français -->
-              </a>
-              <p>Conception et modélisation d'assemblages complexes, en tenant compte des contraintes fonctionnelles et de fabrication.</p> <!-- Description du service en français -->
-              <a href="#" class="stretched-link"></a>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-calendar4-week"></i>
-              </div>
-              <a href="#" class="stretched-link">
-                <h3>Gestion de Projets CAO</h3> <!-- Nom du service en français -->
-              </a>
-              <p>Accompagnement et gestion de vos projets CAO, de la planification à la livraison, pour un développement efficace et maîtrisé.</p> <!-- Description du service en français -->
-              <a href="#" class="stretched-link"></a>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-chat-square-text"></i>
-              </div>
-              <a href="#" class="stretched-link">
-                <h3>Consultation et Expertise</h3> <!-- Nom du service en français -->
-              </a>
-              <p>Conseils d'experts et solutions sur mesure pour optimiser vos processus de conception et répondre à vos défis spécifiques en CAO.</p> <!-- Description du service en français -->
-              <a href="#" class="stretched-link"></a>
-            </div>
-          </div><!-- End Service Item -->
-
-        </div>
-
-      </div>
-
-    </section><!-- End Services Section -->
-
-    <!-- ======= Call To Action Section ======= -->
-    <section id="call-to-action" class="call-to-action section dark-background">
-
-      <img src="assets/img/cta-bg.jpg" alt="">
-
-      <div class="container">
-
-        <div class="row" data-aos="zoom-in" data-aos-delay="100">
-          <div class="col-xl-9 text-center text-xl-start">
-            <h3>Appel à l'Action</h3> <!-- Titre de la section "Appel à l'Action" en français -->
-            <p>Prêt à donner vie à vos projets mécaniques ? Contactez-nous dès aujourd'hui pour discuter de vos besoins et découvrir comment CraftoCAD peut vous aider à atteindre vos objectifs.</p> <!-- Texte de l'appel à l'action en français -->
-          </div>
-          <div class="col-xl-3 cta-btn-container text-center">
-            <a class="cta-btn align-middle" href="#">Contactez-Nous</a> <!-- Bouton "Contactez-Nous" -->
-          </div>
-        </div>
-
-      </div>
-
-    </section><!-- End Call To Action Section -->
-
-    <!-- ======= Features Section ======= -->
-    <section id="features" class="features section">
-
-      <div class="container">
-
-        <div class="row gy-4">
-
-          <div class="features-image col-lg-6 order-lg-2" data-aos="fade-up" data-aos-delay="100"><img src="assets/img/CAD.png" alt=""></div>
-
-          <div class="col-lg-6 order-lg-1">
-
-            <div class="features-item d-flex ps-0 ps-lg-3 pt-4 pt-lg-0" data-aos="fade-up" data-aos-delay="200">
-              <i class="bi bi-person-fill-up"></i>
-              <div>
-                <h4>Expertise Technique</h4> <!-- Titre de la fonctionnalité en français -->
-                <p>Notre équipe possède une solide expertise en CAO mécanique, garantissant des solutions de conception de haute qualité.</p> <!-- Description de la fonctionnalité en français -->
-              </div>
-            </div><!-- End Features Item-->
-
-            <div class="features-item d-flex mt-5 ps-0 ps-lg-3" data-aos="fade-up" data-aos-delay="300">
-              <i class="bi bi-check2-all"></i>
-              <div>
-                <h4>Solutions Personnalisées</h4> <!-- Titre de la fonctionnalité en français -->
-                <p>Nous adaptons nos services à vos besoins spécifiques, offrant des solutions CAO sur mesure pour chaque projet.</p> <!-- Description de la fonctionnalité en français -->
-              </div>
-            </div><!-- End Features Item-->
-
-            <div class="features-item d-flex mt-5 ps-0 ps-lg-3" data-aos="fade-up" data-aos-delay="400">
-              <i class="bi bi-lightbulb-fill"></i>
-              <div>
-                <h4>Innovation et Performance</h4> <!-- Titre de la fonctionnalité en français -->
-                <p>Nous utilisons les dernières technologies CAO pour vous offrir des conceptions innovantes et optimisées en performance.</p> <!-- Description de la fonctionnalité en français -->
-              </div>
-            </div><!-- End Features Item-->
-
-            <div class="features-item d-flex mt-5 ps-0 ps-lg-3" data-aos="fade-up" data-aos-delay="500">
-              <i class="bi bi-signpost-2-fill"></i>
-              <div>
-                <h4>Accompagnement Complet</h4> <!-- Titre de la fonctionnalité en français -->
-                <p>Nous vous accompagnons à chaque étape de votre projet, de la conception initiale à la réalisation finale.</p> <!-- Description de la fonctionnalité en français -->
-              </div>
-            </div><!-- End Features Item-->
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section><!-- End Features Section -->
-
-    <!-- ======= Clients Section ======= -->
-
-
-
-          <!-- Section Title -->
-          
-    <section id="clients" class="clients section">
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Nous Clients</h2> <!-- Titre de la section "À Propos" en français -->
-      </div><!-- End Section Title -->
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row g-0 clients-wrap">
-
-          <div class="col-xl-3 col-md-4 client-logo">
-            <img src="assets/img/clients/client-1.png" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
-
-          <div class="col-xl-3 col-md-4 client-logo">
-            <img src="assets/img/clients/client-2.png" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
-
-          <div class="col-xl-3 col-md-4 client-logo">
-            <img src="assets/img/clients/client-3.png" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
-
-          <div class="col-xl-3 col-md-4 client-logo">
-            <img src="assets/img/clients/client-4.png" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
-
-          <div class="col-xl-3 col-md-4 client-logo">
-            <img src="assets/img/clients/client-5.png" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
-
-          <div class="col-xl-3 col-md-4 client-logo">
-            <img src="assets/img/clients/client-6.png" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
-
-          <div class="col-xl-3 col-md-4 client-logo">
-            <img src="assets/img/clients/client-7.png" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
-
-          <div class="col-xl-3 col-md-4 client-logo">
-            <img src="assets/img/clients/client-8.png" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
-
-        </div>
-
-      </div>
-
-    </section><!-- End Clients Section -->
-
-    <!-- ======= Stats Section ======= -->
-    <section id="stats" class="stats section dark-background">
-
-      <img src="assets/img/stats-bg.jpg" alt="" data-aos="fade-in">
-
-      <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="subheading">
-          <h3>Ce que nous avons accompli jusqu'à présent</h3> <!-- Sous-titre de la section "Stats" en français -->
-          <p>Depuis notre lancement, nous avons aidé de nombreuses entreprises à concrétiser leurs projets de conception mécanique avec succès.</p> <!-- Paragraphe introductif de la section "Stats" en français -->
-        </div>
-
-        <div class="row gy-4">
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="12" data-purecounter-duration="2" class="purecounter"></span>
-              <p>Clients Satisfaits</p> <!-- Statistique en français -->
-            </div>
-          </div><!-- End Stats Item -->
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="8" data-purecounter-duration="2" class="purecounter"></span>
-              <p>Projets CAO Réalisés</p> <!-- Statistique en français -->
-            </div>
-          </div><!-- End Stats Item -->
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="2" class="purecounter"></span>
-              <p>Heures d'Expertise CAO</p> <!-- Statistique en français -->
-            </div>
-          </div><!-- End Stats Item -->
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="5" data-purecounter-duration="2" class="purecounter"></span>
-              <p>Experts en CAO</p> <!-- Statistique en français -->
-            </div>
-          </div><!-- End Stats Item -->
-
-        </div>
-
-      </div>
-
-    </section><!-- End Stats Section -->
-
-<!-- ======= Portfolio Section ======= -->
-<!--
-<section id="portfolio" class="portfolio section">
-
-  Section Title -->
-  <!-- <div class="container section-title" data-aos="fade-up">
-    <h2>Portfolio</h2> 
-    <p>Découvrez quelques-uns de nos projets de conception mécanique les plus récents et innovants.</p> 
-  </div>
-
-  <div class="container">
-
-    <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
-
-      <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
-        <li data-filter="*" class="filter-active">Tous</li> 
-        <li data-filter=".filter-app">Composants Mécaniques</li> 
-        <li data-filter=".filter-product">Assemblages</li> 
-        <li data-filter=".filter-branding">Prototype</li> 
-      </ul>
-
-      <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-
-        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-          <img src="assets/img/masonry-portfolio/masonry-portfolio-1.jpg" class="img-fluid" alt="">
-          <div class="portfolio-info">
-            <h4>Composant 1</h4> 
-            <p>Conception d'un support moteur</p> 
-            <a href="assets/img/masonry-portfolio/masonry-portfolio-1.jpg" title="Composant 1" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-          <img src="assets/img/masonry-portfolio/masonry-portfolio-2.jpg" class="img-fluid" alt="">
-          <div class="portfolio-info">
-            <h4>Assemblage 1</h4> 
-            <p>Modélisation d'un réducteur</p> 
-            <a href="assets/img/masonry-portfolio/masonry-portfolio-2.jpg" title="Assemblage 1" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-          <img src="assets/img/masonry-portfolio/masonry-portfolio-3.jpg" class="img-fluid" alt="">
-          <div class="portfolio-info">
-            <h4>Outillage 1</h4> 
-            <p>Conception d'un moule d'injection</p> 
-            <a href="assets/img/masonry-portfolio/masonry-portfolio-3.jpg" title="Outillage 1" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-          <img src="assets/img/masonry-portfolio/masonry-portfolio-4.jpg" class="img-fluid" alt="">
-          <div class="portfolio-info">
-            <h4>Composant 2</h4> 
-            <p>Modélisation d'un arbre de transmission</p> 
-            <a href="assets/img/masonry-portfolio/masonry-portfolio-4.jpg" title="Composant 2" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-          <img src="assets/img/masonry-portfolio/images.jpeg" class="img-fluid" alt="">
-          <div class="portfolio-info">
-            <h4>Assemblage 2</h4> 
-            <p>Conception d'un système de levage</p> 
-            <a href="assets/img/masonry-portfolio/images.jpeg" title="Assemblage 2" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-          <img src="assets/img/masonry-portfolio/masonry-portfolio-6.jpg" class="img-fluid" alt="">
-          <div class="portfolio-info">
-            <h4>Outillage 2</h4> 
-            <p>Modélisation d'un outil de découpe</p> 
-            <a href="assets/img/masonry-portfolio/masonry-portfolio-6.jpg" title="Outillage 2" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-          <img src="assets/img/masonry-portfolio/masonry-portfolio-7.jpg" class="img-fluid" alt="">
-          <div class="portfolio-info">
-            <h4>Composant 3</h4> 
-            <p>Conception d'un carter de protection</p> 
-            <a href="assets/img/masonry-portfolio/masonry-portfolio-7.jpg" title="Composant 3" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-          <img src="assets/img/masonry-portfolio/images (1).jpeg" class="img-fluid" alt="">
-          <div class="portfolio-info">
-            <h4>Assemblage 3</h4> 
-            <p>Modélisation d'un convoyeur industriel</p> 
-            <a href="assets/img/masonry-portfolio/images (1).jpeg" title="Assemblage 3" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-          <img src="assets/img/masonry-portfolio/masonry-portfolio-9.jpg" class="img-fluid" alt="">
-          <div class="portfolio-info">
-            <h4>Outillage 3</h4> 
-            <p>Conception d'un gabarit d'usinage</p> 
-            <a href="assets/img/masonry-portfolio/masonry-portfolio-9.jpg" title="Outillage 2" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-          </div>
-        </div>
-
-      </div>
-
+    <div id="poll-container">
+        <div class="progress-bar"><div class="progress" id="progress"></div></div>
     </div>
 
-  </div>
+    <script>
+        let answers = {};
 
-</section>-->
-
-   <!-- ======= Value-Based Pricing Section ======= -->
-<section id="pricing" class="pricing section light-background">
-
-  <!-- Section Title -->
-  <div class="container section-title" data-aos="fade-up">
-    <h2>Notre Modèle Collaboratif</h2>
-    <p class="lead">Vous payez pour des résultats, pas pour des heures. Structure transparente sans surprises.</p>
-    <div class="pricing-disclaimer">
-      <i class="bi bi-info-circle"></i> Tous les projets incluent : Révisions illimitées ∙ Garantie de conformité ∙ Support VIP
-    </div>
-  </div>
-
-  <div class="container">
-
-    <div class="row gy-4 justify-content-center">
-
-      <!-- Tier 1: Accelerator Package -->
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-        <div class="pricing-item starter">
-          <div class="tier-header">
-            <h3>Projet Ciblé</h3>
-            <p class="tier-subtitle">Solution clé en main pour besoins spécifiques</p>
-          </div>
-          <div class="tier-benefits">
-            <ul>
-              <li><strong>1-3 composants mécaniques</strong></li>
-              <li>Modélisation 3D optimisée</li>
-              <li>Analyse de faisabilité</li>
-              <li>2 itérations de conception</li>
-              <li>Livraison sous 7 jours</li>
-            </ul>
-          </div>
-          <div class="tier-cta">
-            <a href="#contact" class="btn btn-strategic">
-              <i class="bi bi-lightning-charge"></i> Démarrer mon projet
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tier 2: Startup Prototype (Recommandé) -->
-<div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-  <div class="pricing-item startup">
-    <div class="tier-badge">Prototype Innovant</div>
-    <div class="tier-header">
-      <h3>Prototype Start-Up</h3>
-      <p class="tier-subtitle">Votre première version pour accélérer l'innovation</p>
-    </div>
-    <div class="tier-benefits">
-      <ul>
-        <li><strong>Maquette fonctionnelle</strong></li>
-        <li>Design interactif</li>
-        <li>Tests utilisateurs initiaux</li>
-        <li>Itérations agiles</li>
-        <li>Lancement rapide</li>
-      </ul>
-    </div>
-    <div class="tier-cta">
-      <a href="#contact" class="btn btn-strategic">
-        <i class="bi bi-rocket"></i> Lancer mon prototype
-      </a>
-    </div>
-  </div>
-</div>
-
-
-      <!-- Tier 3: Innovation Lab -->
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-        <div class="pricing-item innovation">
-          <div class="tier-header">
-            <h3>Laboratoire d'Innovation</h3>
-            <p class="tier-subtitle">Co-développement de technologies disruptives</p>
-          </div>
-          <div class="tier-benefits">
-            <ul>
-              <li><strong>Recherche & Développement</strong></li>
-              <li>Ingénierie inverse</li>
-              <li>Benchmark concurrentiel</li>
-              <li>Droits de propriété partagés</li>
-              <li>Équipe dédiée</li>
-            </ul>
-          </div>
-          <div class="tier-cta">
-            <a href="#contact" class="btn btn-strategic">
-              <i class="bi bi-cpu"></i> Innover Ensemble
-            </a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
- <!-- Modules Complémentaires -->
-<div class="row addons" data-aos="fade-up">
-  <div class="col-12">
-    <div class="addon-card">
-      <h4>Modules Complémentaires</h4>
-      <div class="addon-grid">
-
-        <!-- Optimisation de conceptions existantes -->
-        <div class="addon-item">
-          <i class="bi bi-tools"></i> <!-- Icône d'outils pour symboliser l'optimisation -->
-          <span>Optimisation de conceptions existantes</span>
-        </div>
-
-        <!-- Conception de pièces prêtes pour l’impression 3D -->
-        <div class="addon-item">
-          <i class="bi bi-printer"></i> <!-- Icône d'imprimante pour représenter l'impression 3D -->
-          <span>Conception de pièces prêtes pour l’impression 3D</span>
-        </div>
-
-        <!-- Analyse mécanique simplifiée -->
-        <div class="addon-item">
-          <i class="bi bi-graph-up-arrow"></i> <!-- Icône de graphique pour représenter l'analyse -->
-          <span>Analyse mécanique simplifiée</span>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</div>
-
-
-  </div>
-</section>
-        </div>
-
-      </div>
-
-    </section><!-- End Pricing Section -->
-
-    <!-- ======= Faq Section ======= -->
-    <section id="faq" class="faq section">
-
-      <div class="container-fluid">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-7 d-flex flex-column justify-content-center order-2 order-lg-1">
-
-            <div class="content px-xl-5" data-aos="fade-up" data-aos-delay="100">
-              <h3><span>Questions </span><strong>Fréquemment Posées</strong></h3> <!-- Titre de la section "FAQ" en français -->
-              <p>
-                Vous avez des questions sur nos services de conception CAO mécanique ? Consultez notre FAQ pour trouver les réponses aux questions les plus courantes.
-              </p>
-            </div>
-
-            <div class="faq-container px-xl-5" data-aos="fade-up" data-aos-delay="200">
-
-              <div class="faq-item faq-active">
-                <i class="faq-icon bi bi-question-circle"></i>
-                <h3>Qu'est-ce que la conception CAO mécanique et comment CraftoCAD peut m'aider ?</h3> <!-- Question FAQ en français -->
-                <div class="faq-content">
-                  <p>La conception CAO mécanique est le processus de création de modèles numériques de pièces et d'assemblages mécaniques à l'aide de logiciels de Conception Assistée par Ordinateur (CAO). CraftoCAD vous aide en offrant des services experts de modélisation, simulation et dessin technique pour concrétiser vos projets mécaniques, améliorer la performance de vos produits et optimiser vos processus de fabrication.</p> <!-- Réponse FAQ en français -->
-                </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
-
-              <div class="faq-item">
-                <i class="faq-icon bi bi-question-circle"></i>
-                <h3>Quels types de fichiers CAO acceptez-vous et dans quels formats livrez-vous les conceptions ?</h3> <!-- Question FAQ en français -->
-                <div class="faq-content">
-                  <p>Nous acceptons une large gamme de formats de fichiers CAO courants, tels que STEP, IGES, STL, DWG, DXF, et les formats natifs des logiciels CAO les plus utilisés (SolidWorks, AutoCAD, Inventor, etc.). Nous pouvons également livrer nos conceptions dans ces formats, ou dans d'autres formats spécifiques selon vos besoins.</p> <!-- Réponse FAQ en français -->
-                </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
-
-              <div class="faq-item">
-                <i class="faq-icon bi bi-question-circle"></i>
-                <h3>Combien de temps faut-il pour réaliser un projet de conception CAO mécanique avec CraftoCAD ?</h3> <!-- Question FAQ en français -->
-                <div class="faq-content">
-                  <p>Le délai de réalisation d'un projet dépend de sa complexité et de sa portée. Nous nous engageons à respecter les délais et à vous fournir une estimation précise après avoir évalué vos besoins. N'hésitez pas à nous contacter pour discuter de votre projet et obtenir une estimation personnalisée.</p> <!-- Réponse FAQ en français -->
-                </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
-
-            </div>
-
-          </div>
-
-          <div class="col-lg-5 order-1 order-lg-2">
-            <img src="assets/img/faq.webp" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="100" style="width: 70%;">
-
-          </div>
-        </div>
-
-      </div>
-
-    </section><!-- End Faq Section -->
-
-    
-
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact section light-background">
-      <script>
-        document.querySelector(".php-email-form").addEventListener("submit", function(e) {
-            e.preventDefault(); // Prevent default form submission
-            var form = this;
-            var formData = new FormData(form);
-      
-            fetch(form.action, {
-                method: "POST",
-                body: formData
-            })
-            .then(response => response.text())
-            .then(data => {
-                if (data.trim() === "success") {
-                    form.querySelector(".sent-message").style.display = "block";
-                    form.querySelector(".error-message").style.display = "none";
-                    form.reset();
-                } else {
-                    form.querySelector(".error-message").textContent = "Une erreur s'est produite. Réessayez.";
-                    form.querySelector(".error-message").style.display = "block";
+        const questions = [
+            {
+                id: 'intro',
+                text: "Bienvenue dans le sondage d'opinion MentaFox ! Nous explorons le besoin d'un nouveau programme GMAO pour aider les entreprises comme la vôtre à gérer la maintenance efficacement.",
+                type: 'info'
+            },
+            // Partie 1 : Identification
+            {
+                id: 'q1',
+                text: "Quel est votre rôle dans la gestion de la maintenance de votre entreprise ?",
+                type: 'radio',
+                options: [
+                    'Responsable maintenance / Chef de service',
+                    'Technicien de maintenance',
+                    'Directeur technique / Directeur d’usine',
+                    'Responsable des achats / financier',
+                    'Autre'
+                ],
+                hasOther: true
+            },
+            {
+                id: 'q2',
+                text: "Dans quelle industrie évolue votre entreprise ?",
+                type: 'radio',
+                options: [
+                    'Industrie lourde (sidérurgie, cimenterie…)',
+                    'Pétrole & Gaz / Énergie',
+                    'Agroalimentaire',
+                    'Transport & Logistique',
+                    'BTP / Construction',
+                    'Autre'
+                ],
+                hasOther: true,
+                icons: {
+                    'Industrie lourde (sidérurgie, cimenterie…)': 'fa-industry',
+                    'Pétrole & Gaz / Énergie': 'fa-bolt',
+                    'Agroalimentaire': 'fa-utensils',
+                    'Transport & Logistique': 'fa-truck',
+                    'BTP / Construction': 'fa-building',
+                    'Autre': 'fa-question'
                 }
-            })
-            .catch(error => {
-                form.querySelector(".error-message").textContent = "Erreur de connexion.";
-                form.querySelector(".error-message").style.display = "block";
+            },
+            {
+                id: 'q3',
+                text: "Taille de votre entreprise ?",
+                type: 'radio',
+                options: ['Moins de 10 employés', '10 à 50 employés', '50 à 200 employés', 'Plus de 200 employés']
+            },
+            // Partie 2 : Gestion Actuelle
+            {
+                id: 'q4',
+                text: "Comment gérez-vous actuellement la maintenance ?",
+                type: 'radio',
+                options: ['Avec une GMAO', 'Avec Excel ou documents papier', 'Nous n’avons pas de système structuré']
+            },
+            {
+                id: 'q5',
+                text: "Si vous utilisez une GMAO, quelle solution utilisez-vous ?",
+                type: 'radio',
+                options: ['SAP PM', 'IBM Maximo', 'Siveco', 'Développée en interne', 'Autre'],
+                hasOther: true
+            },
+            {
+                id: 'q6',
+                text: "Quels sont les principaux problèmes rencontrés avec votre solution actuelle ?",
+                type: 'checkbox',
+                options: [
+                    'Coût élevé 💰',
+                    'Complexité d’installation et d’utilisation ⚙️',
+                    'Support technique insuffisant 📞',
+                    'Manque d’intégration avec d’autres outils 🔗',
+                    'Fonctionnalités inadaptées à nos besoins 🎛️',
+                    'Autre'
+                ],
+                hasOther: true,
+                icons: {
+                    'Coût élevé 💰': 'fa-money-bill-wave',
+                    'Complexité d’installation et d’utilisation ⚙️': 'fa-cogs',
+                    'Support technique insuffisant 📞': 'fa-phone-slash',
+                    'Manque d’intégration avec d’autres outils 🔗': 'fa-link',
+                    'Fonctionnalités inadaptées à nos besoins 🎛️': 'fa-sliders-h',
+                    'Autre': 'fa-question'
+                }
+            },
+            {
+                id: 'q7',
+                text: "Si vous n’avez pas encore de GMAO, pourquoi ?",
+                type: 'radio',
+                options: [
+                    'Coût trop élevé',
+                    'Complexité d’installation et de formation',
+                    'Pas de besoin identifié',
+                    'Autre'
+                ],
+                hasOther: true
+            },
+            // Partie 3 : Décision et Budget
+            {
+                id: 'q8',
+                text: "Qui prend la décision d'achat pour un logiciel de maintenance dans votre entreprise ?",
+                type: 'radio',
+                options: [
+                    'Responsable maintenance',
+                    'Direction technique',
+                    'Service achats / Finance',
+                    'PDG / DG',
+                    'Autre'
+                ],
+                hasOther: true
+            },
+            {
+                id: 'q9',
+                text: "Quel est le processus d’achat d’un nouveau logiciel dans votre entreprise ?",
+                type: 'checkbox',
+                options: [
+                    'Étude des besoins internes',
+                    'Consultation et benchmark des solutions existantes',
+                    'Démonstration / test de la solution',
+                    'Validation par la direction générale',
+                    'Négociation et achat',
+                    'Autre'
+                ],
+                hasOther: true
+            },
+            {
+                id: 'q10',
+                text: "Combien seriez-vous prêt à investir par an pour une GMAO efficace et locale ?",
+                type: 'radio',
+                options: [
+                    'Moins de 50 000 DZD',
+                    '50 000 - 150 000 DZD',
+                    'Plus de 150 000 DZD',
+                    'Nous ne disposons pas de budget dédié'
+                ]
+            },
+            // Partie 4 : Intérêt et Fonctionnalités
+            {
+                id: 'q11',
+                text: "Seriez-vous intéressé par une solution GMAO locale, plus accessible et adaptée à votre entreprise ?",
+                type: 'radio',
+                options: [
+                    'Oui, absolument',
+                    'Peut-être, selon les fonctionnalités et le prix',
+                    'Non, nous sommes satisfaits de notre solution actuelle'
+                ]
+            },
+            {
+                id: 'q12',
+                text: "Quelles fonctionnalités considérez-vous comme essentielles dans une GMAO ? (Classez de 1 à 5, 1 = indispensable, 5 = optionnel)",
+                type: 'rating',
+                items: [
+                    'Gestion des équipements et interventions',
+                    'Gestion des stocks et des commandes',
+                    'Suivi des coûts de maintenance',
+                    'Rapports et analyses de performance',
+                    'Accessibilité mobile et cloud'
+                ]
+            },
+            // Partie 5 : Collaboration
+            {
+                id: 'q13',
+                text: "Accepteriez-vous de tester gratuitement notre solution en avant-première et de donner votre retour ?",
+                type: 'radio',
+                options: ['Oui, nous sommes intéressés', 'Peut-être, selon les conditions', 'Non, pas pour le moment']
+            },
+            {
+                id: 'q14',
+                text: "Seriez-vous prêt à participer à une démonstration gratuite ?",
+                type: 'radio',
+                options: ['Oui, je veux en savoir plus', 'Non, pas pour le moment']
+            },
+            {
+                id: 'q15',
+                text: "Merci de laisser vos coordonnées pour bénéficier de l’offre :",
+                type: 'contact'
+            }
+        ];
+
+        function updateProgress(currentIndex) {
+            const totalQuestions = questions.length - 1;
+            const progress = (currentIndex / totalQuestions) * 100;
+            const progressElement = document.getElementById('progress');
+            if (progressElement) {
+                progressElement.style.width = `${progress}%`;
+            }
+        }
+
+        function renderQuestion(id) {
+            const question = questions.find(q => q.id === id);
+            if (!question) return;
+
+            let currentIndex = questions.findIndex(q => q.id === id);
+            let html = `
+                <div class="progress-bar"><div class="progress" id="progress"></div></div>
+                <div class="poll-question">
+            `;
+            if (question.type === 'info') {
+                html += `<p>${question.text}</p>`;
+            } else if (question.type === 'contact') {
+                html += `<h2>${question.text}</h2>`;
+                html += `<input type="text" id="contact_name" placeholder="Nom">`;
+                html += `<input type="email" id="contact_email" placeholder="Email">`;
+                html += `<input type="tel" id="contact_phone" placeholder="Téléphone">`;
+            } else {
+                html += `<h2>${question.text}</h2>`;
+            }
+
+            if (question.type === 'radio' || question.type === 'checkbox') {
+                const inputType = question.type;
+                question.options.forEach(option => {
+                    const icon = question.icons ? `<i class="fas ${question.icons[option]}"></i> ` : '';
+                    html += `<label>${icon}<input type="${inputType}" name="${id}" value="${option}"> ${option}</label>`;
+                });
+                if (question.hasOther) {
+                    html += `<label><input type="${inputType}" name="${id}" value="Autre"> Autre</label> <input type="text" id="${id}_other" style="display:none;">`;
+                }
+            } else if (question.type === 'rating') {
+                html += '<div class="rating-group">';
+                question.items.forEach(item => {
+                    html += `<div>${item} : `;
+                    for (let i = 1; i <= 5; i++) {
+                        html += `<div class="rating-option"><input type="radio" name="${id}_${item}" value="${i}" id="${id}_${item}_${i}"><label for="${id}_${item}_${i}">${i}</label></div>`;
+                    }
+                    html += `</div>`;
+                });
+                html += '</div>';
+            }
+
+            html += '<button id="next-btn">' + (question.type === 'info' ? 'Commencer' : 'Suivant') + '</button></div>';
+            document.getElementById('poll-container').innerHTML = html;
+
+            updateProgress(currentIndex);
+
+            if (question.hasOther) {
+                const otherInputs = document.querySelectorAll(`input[name="${id}"]`);
+                otherInputs.forEach(input => {
+                    input.addEventListener('change', () => {
+                        const otherText = document.getElementById(`${id}_other`);
+                        otherText.style.display = input.value === 'Autre' && input.checked ? 'block' : 'none';
+                    });
+                });
+            }
+
+            document.getElementById('next-btn').addEventListener('click', () => {
+                if (question.type === 'radio') {
+                    const selected = document.querySelector(`input[name="${id}"]:checked`);
+                    if (!selected) {
+                        alert('Veuillez sélectionner une option.');
+                        return;
+                    }
+                    answers[id] = selected.value;
+                    if (question.hasOther && selected.value === 'Autre') {
+                        answers[id + '_other'] = document.getElementById(`${id}_other`).value;
+                    }
+                } else if (question.type === 'checkbox') {
+                    const checked = document.querySelectorAll(`input[name="${id}"]:checked`);
+                    answers[id] = Array.from(checked).map(c => c.value);
+                    if (question.hasOther && answers[id].includes('Autre')) {
+                        answers[id + '_other'] = document.getElementById(`${id}_other`).value;
+                    }
+                } else if (question.type === 'rating') {
+                    answers[id] = {};
+                    let allRated = true;
+                    question.items.forEach(item => {
+                        const selected = document.querySelector(`input[name="${id}_${item}"]:checked`);
+                        if (selected) {
+                            answers[id][item] = parseInt(selected.value);
+                        } else {
+                            allRated = false;
+                        }
+                    });
+                    if (!allRated) {
+                        alert('Veuillez noter tous les critères.');
+                        return;
+                    }
+                } else if (question.type === 'contact') {
+                    const name = document.getElementById('contact_name').value;
+                    const email = document.getElementById('contact_email').value;
+                    const phone = document.getElementById('contact_phone').value;
+                    if (!name || !email || !phone) {
+                        alert('Veuillez remplir tous les champs de contact.');
+                        return;
+                    }
+                    if (!/\S+@\S+\.\S+/.test(email)) {
+                        alert('Veuillez entrer un email valide.');
+                        return;
+                    }
+                    answers['contact'] = { name, email, phone };
+                    submitPoll();
+                    return;
+                }
+
+                let nextId;
+                if (id === 'intro') {
+                    nextId = 'q1';
+                } else if (id === 'q1') {
+                    nextId = 'q2';
+                } else if (id === 'q2') {
+                    nextId = 'q3';
+                } else if (id === 'q3') {
+                    if (answers.q1 === 'Responsable maintenance / Chef de service' || answers.q1 === 'Directeur technique / Directeur d’usine') nextId = 'q4';
+                    else if (answers.q1 === 'Technicien de maintenance') nextId = 'q8';
+                    else if (answers.q1 === 'Responsable des achats / financier') nextId = 'q13';
+                    else nextId = 'q8'; // "Autre"
+                } else if (id === 'q4') {
+                    if (answers.q4 === 'Avec une GMAO') nextId = 'q5';
+                    else if (answers.q4 === 'Avec Excel ou documents papier') nextId = 'q6';
+                    else nextId = 'q7';
+                } else if (id === 'q5') {
+                    nextId = 'q6';
+                } else if (id === 'q6') {
+                    nextId = 'q8';
+                } else if (id === 'q7') {
+                    nextId = 'q8';
+                } else if (id === 'q8') {
+                    nextId = 'q9';
+                } else if (id === 'q9') {
+                    nextId = 'q10';
+                } else if (id === 'q10') {
+                    nextId = 'q11';
+                } else if (id === 'q11') {
+                    nextId = 'q12';
+                } else if (id === 'q12') {
+                    nextId = 'q13';
+                } else if (id === 'q13') {
+                    nextId = 'q14';
+                } else if (id === 'q14') {
+                    if (answers.q13 === 'Oui, nous sommes intéressés' || answers.q14 === 'Oui, je veux en savoir plus') nextId = 'q15';
+                    else submitPoll();
+                }
+
+                if (nextId) renderQuestion(nextId);
             });
-        });
-      </script>
-      
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Contactez-Nous</h2> <!-- Titre de la section "Contact" en français -->
-        <p>N'hésitez pas à nous contacter pour toute question ou demande d'informations sur nos services de conception CAO mécanique.</p> <!-- Texte introductif de la section "Contact" en français -->
-      </div><!-- End Section Title -->
+        }
 
-      <div class="container" data-aos="fade" data-aos-delay="100">
+        function submitPoll() {
+    fetch('https://usebasin.com/f/da715687b44f', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(answers)
+    })
+    .then(() => {
+        document.getElementById('poll-container').innerHTML = `
+            <div class="poll-question" style="text-align: center;">
+                <i class="fas fa-check-circle" style="font-size: 3em; color: #10b981;"></i>
+                <h2>Merci pour votre participation à MentaFox !</h2>
+                <p>Vos réponses ont été enregistrées.</p>
+            </div>
+        `;
+        console.log('Réponses envoyées :', answers);
+    })
+    .catch(error => {
+        console.error('Erreur :', error);
+        document.getElementById('poll-container').innerHTML = `
+            <div class="poll-question" style="text-align: center;">
+                <i class="fas fa-exclamation-triangle" style="font-size: 3em; color: #ef4444;"></i>
+                <h2>Erreur lors de l’envoi</h2>
+                <p>Une erreur s’est produite. Veuillez réessayer plus tard.</p>
+            </div>
+        `;
+    });
+}
 
-        <div class="row gy-4">
-
-          <div class="col-lg-4">
-            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
-              <i class="bi bi-geo-alt flex-shrink-0"></i>
-              <div>
-                <h3>Adresse</h3> <!-- Titre de l'information de contact en français -->
-                <p>Bejaia, Bejaia, Algerie</p> <!-- Adresse fictive en français -->
-              </div>
-            </div><!-- End Info Item -->
-
-            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
-              <i class="bi bi-telephone flex-shrink-0"></i>
-              <div>
-                <h3>Appelez-Nous</h3> <!-- Titre de l'information de contact en français -->
-                <p>+213 540 53 78 87</p> <!-- Numéro de téléphone fictif français -->
-              </div>
-            </div><!-- End Info Item -->
-
-            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
-              <i class="bi bi-envelope flex-shrink-0"></i>
-              <div>
-                <h3>Envoyez-Nous un Email</h3> <!-- Titre de l'information de contact en français -->
-                <p>contact@craftocad.tech</p> <!-- Email fictif pour CraftoCAD -->
-              </div>
-            </div><!-- End Info Item -->
-
-          </div>
-
-          <div class="col-lg-8">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
-
-              <div class="row gy-4">
-
-                <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Votre Nom" required=""> <!-- Placeholder en français -->
-                </div>
-
-                <div class="col-md-6 ">
-                  <input type="email" class="form-control" name="email" placeholder="Votre Email" required=""> <!-- Placeholder en français -->
-                </div>
-
-                <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Sujet" required=""> <!-- Placeholder en français -->
-                </div>
-
-                <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea> <!-- Placeholder en français -->
-                </div>
-
-                <div class="col-md-12 text-center">
-                  <div class="loading">Chargement</div> <!-- Message de chargement en français -->
-                  <div class="error-message"></div>
-                  <div class="sent-message">Votre message a été envoyé. Merci !</div> <!-- Message de succès en français -->
-
-                  <button type="submit">Envoyer le Message</button> <!-- Bouton "Envoyer le Message" en français -->
-                </div>
-
-              </div>
-            </form>
-          </div><!-- End Contact Form -->
-
-        </div>
-
-      </div>
-
-    </section><!-- End Contact Section -->
-
-  </main><!-- End Main -->
-
-  <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer dark-background">
-    <div class="container">
-      <h3 class="sitename">CraftoCAD</h3>
-      <p>Votre partenaire de confiance pour tous vos besoins en conception CAO mécanique. Ensemble, transformons vos idées en succès.</p> <!-- Texte du footer en français -->
-      <div class="social-links d-flex justify-content-center">
-        <a href=""><i class="bi bi-twitter-x"></i></a>
-        <a href="https://www.facebook.com/profile.php?id=61566933735232"><i class="bi bi-facebook"></i></a>
-        <a href=""><i class="bi bi-instagram"></i></a>
-        <a href=""><i class="bi bi-linkedin"></i></a>
-      </div>
-    </div>
-  </footer><!-- End Footer -->
-
-  <!-- ======= Scroll Top ======= -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- ======= Preloader ======= -->
-  <div id="preloader"></div>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
-
+        renderQuestion('intro');
+    </script>
 </body>
-
 </html>
