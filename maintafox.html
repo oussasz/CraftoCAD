@@ -10,6 +10,11 @@
     <style>
 
 
+#footertext {
+    font-size: 12px; /* اختر الحجم الذي تريده */
+    padding-top: 1%;
+}
+
 .caption {
     font-size: 14px; /* Slightly larger for readability on phones */
     color: #666;
@@ -133,7 +138,7 @@ iframe {
             animation: fadeIn 1s ease-in;
         }
         #header img {
-        width: 30%; height: auto;
+        width: 40%; height: auto;
 
         }
         #poll-container {
@@ -250,7 +255,7 @@ iframe {
         }
         @media (max-width: 600px) {
             body { padding: 10px; }
-            #header { padding: 0px; }
+            #header { padding: 10px; }
             #poll-container { padding: 15px; }
             .poll-question h2 { font-size: 1.4em; }
             .poll-question label { font-size: 1em; padding: 8px; }
@@ -283,8 +288,13 @@ iframe {
 
 function closeVideoPopup() {
     const popup = document.getElementById("videoPopup");
+    if (player) {
+        player.stopVideo();
+    }
     popup.classList.remove("active");
 }
+
+
         let answers = {};
 
         const questions = [
@@ -653,17 +663,32 @@ function closeVideoPopup() {
 }
 
         renderQuestion('intro');
+        var player;
+
+function onYouTubeIframeAPIReady() {
+    const iframe = document.querySelector("#videoPopup iframe");
+    player = new YT.Player(iframe, {
+        events: {
+            'onReady': onPlayerReady
+        }
+    });
+}
+
+function onPlayerReady(event) {
+    // The player is ready; no action needed here unless you want to do something when it loads
+}
     </script>
 </body>
 </footer>
-<div class="play-button-container">
-    <span class="caption">Si vous ne savez pas ce qu'est une GMAO, <span class="clickable-text" onclick="openVideoPopup()">cliquez ici</span>.</span>
+<div id="footertext">
+    <span>Si vous ne savez pas ce qu'est une GMAO, <span class="clickable-text" onclick="openVideoPopup()">cliquez ici</span>.</span>
 </div>
 <div id="videoPopup" class="popup">
     <div class="popup-content">
         <span class="close-button" onclick="closeVideoPopup()">×</span>
-        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/2hLLxCEbcTk?si=WYQQdbOB6lINkwRt&rel=0&modestbranding=1&autoplay=1" frameborder="0" allowfullscreen></iframe>
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/2hLLxCEbcTk?si=WYQQdbOB6lINkwRt&rel=0&modestbranding=1&autoplay=1&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
     </div>
 </div>
 </footer>
+<script src="https://www.youtube.com/iframe_api"></script>
 </html>
