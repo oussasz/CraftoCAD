@@ -1,8 +1,5 @@
 # CraftoCAD  
-🚀 A wild experiment in web development!  
-
-## About  
-CraftoCAD is a self-made, non-professional website built purely for learning purposes. It's my playground for exploring web design and development—without any prior coding experience!  
+a self-made, non-professional website built purely for learning purposes. It's my playground for exploring web design and development—without any prior coding experience!  
 
 ## Why?  
 Because why not? I'm not a programmer, but that won't stop me from trying! 💻  
@@ -14,4 +11,6 @@ This project is a mix of trial, error, and a lot of Googling. If you're a develo
 ✔️ Might break at any moment (stay alert!)  
 
 ## Disclaimer  
-This is not a professional project (yet). Proceed with caution! 😜  
+This is not a professional project (yet). Explore at your own risk! 😜  
+
+🔗 **Check it out here:** [CraftoCAD.tech](https://craftocad.tech)  
